@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css?family=Work+Sans");
+
+body {
+  max-height: 100vh;
+  background-color: aquamarine;
+  display: grid;
+  place-items: center;
+  font-family: "work Sans", sans-serif;
+}
+
+#title {
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px black;
+}
+
+#description {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.box {
+  min-width: 60vh;
+  background: white;
+  padding: 50px 50px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.65);
+}
+
+.row-tab {
+  margin-bottom: 10px;
+}
+
+.labels {
+  display: inline-block;
+  text-align: right;
+  width: 40%;
+  padding: 5px;
+  vertical-align: top;
+}
+
+.right-tab {
+  display: inline-block;
+  text-align: left;
+  width: 48%;
+  vertical-align: middle;
+}
+
+.input-field {
+  width: 280px;
+}
+
+#textarea {
+  height: 50px;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  padding: 1.1em;
+  border-radius: 5px;
+  border: none;
+  background-color: cornflowerblue;
+  color: white;
+  text-align: center;
+  margin: 0px auto;
+}

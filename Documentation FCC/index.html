@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Facebook Business Manager SDK Documentation</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <nav id="navbar">
+      <header>Facebook Business SDK</header>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites for Using the SDK</a></li>
+        <li>
+          <a href="#installing">Install and Configure the SDK</a>
+          <ul>
+            <li><a href="#java">Java</a></li>
+            <li><a href="#php">PHP</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <main id="main-doc">
+      <header>Getting Started with the Facebook Business SDK</header>
+      <section class="main-section" id="prerequisites">
+        <h3>Prerequisites for Using the SDK</h3>
+        <p>
+          To get started with the Facebook Business SDK, complete the following
+          prerequisite tasks:
+        </p>
+
+        <article>
+          <h4>1. Register as a Facebook developer.</h4>
+          <p>If you don't have a Facebook developer account, create a one now.</p>
+          <button>Create a Developer Account</button>
+        </article>
+
+        <hr />
+
+        <article>
+        <h4>2. Get an App ID for the app you are creating.</h4>
+        <p>
+          You get an App ID by creating a Facebook App entry on the App
+          Dashboard. The App ID is a unique identifier that is used in API calls
+          to differentiate your app from others.
+        </p>
+        <P
+          >In most cases your app will need to go through App Review to acces
+          the APIs of this SDK.
+        </P>
+      </article>
+        <hr />
+
+        <article>
+        <h4>3. Get an App Secret.</h4>
+        <p>
+          The App Secret is a unique identifier associated with your application
+          that authenticates requests made by your application to Facebook
+          servers. Your App Secret should be treated like a password. For best
+          practices on using and protecting App Secrets, see Login Security. To
+          generate an App Secret:
+        </p>
+        <ol>
+          <li>Go to the App Dashboard and select your app.</li>
+          <li>Open the Settings menu on the left and select Basic.</li>
+          <li>
+            Click the Show button. This displays your App Secret. Make a copy of
+            it because it will be used when making API calls later.
+            <img
+              src="https://scontent-mxp1-1.xx.fbcdn.net/v/t39.2365-6/31515316_186920621943965_7077700671780159488_n.png?_nc_cat=110&_nc_ht=scontent-mxp1-1.xx&oh=4d461969898b244ac2e7d01dbf05ad35&oe=5CE41325"
+              alt=""
+            />
+          </li>
+        </ol>
+      </article>
+        <hr />
+        <article>
+        <h4>4. Generate a User Access Token.</h4>
+        <p>
+          Graph API requires User Access Tokens. They are unique to each User
+          and automatically expire in about an hour. You will use this User
+          access token in a later step.
+        </p>
+        <p>
+          Please see the Common Scenarios Switching Access Tokens to learn how
+          to exchange a User access token for a Page access token.
+        </p>
+      </article>
+      <article>
+        <h4>5. Create an Ad Account.</h4>
+        <p>
+          Visit the Ads Manager to create an account. An ad account will be
+          automatically created for you if you do not have one already. Make a
+          note of the Ad Account ID.
+        </p>
+        <img
+          src="https://scontent-mxp1-1.xx.fbcdn.net/v/t39.2365-6/31658546_243385349568917_6783040411758755840_n.png?_nc_cat=103&_nc_ht=scontent-mxp1-1.xx&oh=cea5aa3d7a554ece5de66536fda68181&oe=5CDD4202"
+          alt=""
+        />
+        <p>
+          Learn more about ads and creating campaigns in our Ads Basics Guide.
+        </p>
+      </article>
+      </section>
+      <section class="main-section" id="installing">
+        <h3>Install and Configure the SDK</h3>
+        <p>
+          The instructions for installing and configuring vary based on the
+          programming language used. Select your language from the list below
+          for the implementation details.
+        </p>
+        <strong>Development Languages</strong>
+        <ul>
+            <li><a href="#java">Java</a></li>
+            <li><a href="#php">PHP</a></li>
+        </ul>
+        <article>
+        <h4 id="java">Java</h4>
+        <p>For Java development, you can use whatever development environment you like, as long as it supports Maven builds.</p>
+        <h5>Add the Facebook Business SDK dependency to your Maven project.</h5>
+        <p>Add the following XML code to the dependencies section of your pom.xml file:</p>
+        <code><!-- https://mvnrepository.com/artifact/com.facebook.business.sdk/facebook-java-business-sdk -->
+            <dependency>
+                <groupId>com.facebook.business.sdk</groupId>
+                <artifactId>facebook-java-business-sdk</artifactId> 
+                <version>[3.0.0,)</version>
+            </dependency></code>
+        <h5>Create a Java Class</h5>
+        <p>Under src/main/java, create a Java class called TestFBJavaSDK, and add the following code:</p>
+        <code>import com.facebook.ads.sdk.APIContext;
+            import com.facebook.ads.sdk.APINodeList;
+            import com.facebook.ads.sdk.AdAccount;
+            import com.facebook.ads.sdk.Campaign;
+            
+            public class TestFBJavaSDK
+            {
+                public static final APIContext context = new APIContext(
+                        "your-access-token",
+                        "your-appsecret"
+                );
+                public static void main(String[] args)
+                {
+                    AdAccount account = new AdAccount("act_{your-adaccount-id}", context);
+                    try {
+                        APINodeList<Campaign> campaigns = account.getCampaigns().requestAllFields().execute();
+                        for(Campaign campaign : campaigns) {
+                            System.out.println(campaign.getFieldName());
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }}</code>
+            <h5>Test Your Install</h5>
+            <p>Build and run your app. You should see the result in your console logging window. If it complains about an expired token, repeat the process for requesting a Page Access Token described in the prerequisites section above.</p>
+          </article>
+          <article>
+            <h4 id="php">PHP</h4>
+            <p>For PHP projects, the Facebook Business SDK can be installed using Composer. If you do not have it, you will need to install Composer before continuing.</p>
+            <h5>Create a New Project Folder</h5>
+            <p>Open a command terminal window and create a new folder for your project. When done, make it your current working directory. For example:</p>
+            <code>mkdir my_test_php_app
+                cd my_test_php_app</code>
+            <h5>Install the Facebook Business SDK for PHP</h5>
+            <p>Create composer.json with the following contents:</p>
+            <code>{
+                "name": "name/my_test_php_app",
+                "type": "project",
+                "require": {
+                    "facebook/php-business-sdk": "^3.0.0"
+                },
+                "authors": [
+                    {
+                        "name": "Your Name",
+                        "email": "some@email.com"
+                    }
+                ]
+            }</code>
+            <p>Install the SDK by running the following command in your terminal window:</p>
+            <code>composer install</code>
+            <h5>Create a PHP File</h5>
+            <p>Create a src/test.php file with the contents below:</p>
+            <code><?php
+                require_once __DIR__ . '/../vendor/autoload.php';
+                use FacebookAds\Api;
+                use FacebookAds\Logger\CurlLogger;
+                use FacebookAds\Object\AdAccount;
+                use FacebookAds\Object\Campaign;
+                use FacebookAds\Object\Fields\CampaignFields;
+                
+                $app_id = "{your-app-id}";
+                $app_secret = "{your-appsecret}";
+                $access_token = "{your-access-token}";
+                $account_id = "act_{your-adaccout-id}";
+                
+                Api::init($app_id, $app_secret, $access_token);
+                
+                $account = new AdAccount($account_id);
+                $cursor = $account->getCampaigns();
+                
+                // Loop over objects
+                foreach ($cursor as $campaign) {
+                  echo $campaign->{CampaignFields::NAME}.PHP_EOL;
+                }</code>
+                <h5>Test Your Install
+                </h5>
+                <p>Test your install with the following command:</p>
+                <code>php src/test.php</code>
+                <p>You should see the result in your terminal window. If it complains about an expired token, repeat the process for requesting a Page Access Token described in the prerequisites section above.</p>
+              </article>
+      </section>
+    </main>
+  </body>
+</html>
