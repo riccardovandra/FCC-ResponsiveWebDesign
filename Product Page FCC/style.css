@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css?family=Nanum+Gothic");
+
+body {
+  margin: 0;
+  font-family: "Nanum Gothic", sans-serif;
+}
+nav {
+  background-color: #96b2dd;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10vh;
+}
+
+ul {
+  margin: 0;
+  display: flex;
+  list-style: none;
+  padding: 0;
+  height: inherit;
+}
+
+#header-img {
+  margin-right: auto;
+}
+
+span {
+  margin-left: 5px;
+  text-transform: uppercase;
+}
+
+nav > ul > li {
+  padding: 10px;
+  color: #fff;
+  margin: auto 0;
+}
+
+.fa-linkedin {
+  background-color: #3077b0;
+  padding: 5px;
+  border-radius: 2px;
+}
+
+nav > ul > li:not(#header-img) {
+  margin-right: 20px;
+  display: inline-block;
+  width: 60px;
+  height: 20px;
+  padding: 8px;
+  border-radius: 2px;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.54);
+}
+
+nav > ul > li > a {
+  text-decoration: none;
+  color: white;
+}
+
+.main-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url("https://images.unsplash.com/photo-1486546910464-ec8e45c4a137?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1551&q=80");
+}
+
+h1 {
+  color: white;
+}
+
+form > input {
+  padding: 10px;
+  width: 180px;
+  margin-right: 10px;
+}
+
+form > button {
+  padding: 15px;
+  outline: none;
+  border: 1px solid white;
+  color: white;
+  border-radius: 5px;
+  background-color: #01639b;
+}
+
+.features {
+  display: grid;
+  grid-template-areas: "left-tab right-tab";
+  box-sizing: border-box;
+  background: rgba(209, 210, 211, 0.2);
+  padding: 30px 0;
+}
+
+h2 {
+  text-transform: uppercase;
+}
+
+.left-tab {
+  grid-area: left-tab;
+  margin: 0 20px;
+}
+
+.left-tab > ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.right-tab {
+  grid-area: right-tab;
+  margin: 0 auto;
+}
+
+.versions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 30px;
+  margin: 30px 30px;
+}
+
+.version {
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid black;
+  text-align: center;
+  padding-bottom: 10px;
+  transition: transform 1s ease-in-out;
+}
+
+.version:hover {
+  transform: scale(1.1);
+}
+
+.version1:hover {
+  border: 1px solid silver;
+}
+
+.version2:hover {
+  border: 1px solid gold;
+}
+
+.version3:hover {
+  border: 1px solid #2dec07;
+}
+
+.version > p {
+  margin: 10px;
+}
+
+h5,
+h4 {
+  text-align: center;
+}
+
+footer > ul {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 30px;
+}
